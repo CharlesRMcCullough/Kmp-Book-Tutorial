@@ -33,3 +33,9 @@ in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and r
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+Youtube video URL:
+https://www.youtube.com/watch?v=WT9-4DXUqsM&list=WL&index=5&t=373s
+
+Current Timecode:
+47:39
