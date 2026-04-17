@@ -32,7 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.charlesmccullough.bookpedia.book.data.Book
+import com.charlesmccullough.bookpedia.book.domain.Book
 import com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.components.BookList
 import com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.components.BookSearchBar
 import com.plcoding.bookpedia.core.presentation.DarkBlue

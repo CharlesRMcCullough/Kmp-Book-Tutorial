@@ -1,6 +1,6 @@
 package com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list
 
-import com.charlesmccullough.bookpedia.book.data.Book
+import com.charlesmccullough.bookpedia.book.domain.Book
 import com.plcoding.bookpedia.core.presentation.UiText
 
 val books = (1..100).map {

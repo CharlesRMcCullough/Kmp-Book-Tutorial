@@ -1,4 +1,4 @@
-package com.charlesmccullough.bookpedia.book.data
+package com.charlesmccullough.bookpedia.book.domain
 
 data class Book(
     val id: String,
