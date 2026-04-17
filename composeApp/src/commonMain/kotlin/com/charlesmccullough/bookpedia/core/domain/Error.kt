@@ -1,3 +1,3 @@
-package com.plcoding.bookpedia.core.domain
+package com.charlesmccullough.bookpedia.core.domain
 
 interface Error

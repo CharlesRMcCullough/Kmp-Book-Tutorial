@@ -38,4 +38,4 @@ Youtube video URL:
 https://www.youtube.com/watch?v=WT9-4DXUqsM&list=WL&index=5&t=373s
 
 Current Timecode:
-1:36:13
+2:14:35
