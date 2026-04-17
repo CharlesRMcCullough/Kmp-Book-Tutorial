@@ -21,7 +21,7 @@ class BookListViewModel : ViewModel() {
             }
             is BookListAction.OnTabSelected -> {
                 _state.update {
-                    it.copy(selectedIndex = action.index)
+                    it.copy(selectedTabIndex = action.index)
                 }
             }
         }
