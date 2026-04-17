@@ -6,7 +6,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class BookListViewModel : ViewModel() {
-    private val _state = MutableStateFlow(BookListState())
+    private val _state = MutableStateFlow(BookListState(
+        searchResults = books
+    ))
     val state = _state.asStateFlow()
 
     fun onAction(action: BookListAction) {
