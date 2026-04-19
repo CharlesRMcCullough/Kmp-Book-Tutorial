@@ -1,5 +1,6 @@
 package com.charlesmccullough.bookpedia.book.data.network
 
+import com.charlesmccullough.bookpedia.book.data.dto.SearchResponseDto
 import com.charlesmccullough.bookpedia.book.domain.Book
 import com.charlesmccullough.bookpedia.core.data.safeCall
 import com.charlesmccullough.bookpedia.core.domain.DataError
@@ -10,14 +11,14 @@ import io.ktor.client.request.parameter
 
 private const val BASE_URL = "https://openlibrary.org"
 
-class KtoreRemoteBookDataSource(
+class KtorRemoteBookDataSource(
     private val httpClient: HttpClient
-) {
+): RemoteBookDataSource {
 
-    suspend fun searchBooks(
+    override suspend fun searchBooks(
         query: String,
         resultLimit: Int?
-    ): Result<List<Book>, DataError.Remote> {
+    ): Result<SearchResponseDto, DataError.Remote> {
         return safeCall {
             httpClient.get(
                 urlString = "$BASE_URL/search.json"
