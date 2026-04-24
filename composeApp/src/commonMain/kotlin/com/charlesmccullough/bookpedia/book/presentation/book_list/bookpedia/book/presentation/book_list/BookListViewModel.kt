@@ -9,12 +9,15 @@ import com.charlesmccullough.bookpedia.core.domain.onSuccess
 import com.charlesmccullough.bookpedia.core.presentation.toUiText
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -25,7 +28,18 @@ class BookListViewModel(
     private val cachedBooks = emptyList<Book>()
     private val _state = MutableStateFlow(BookListState())
     private var searchJob: Job? = null
-    val state = _state.asStateFlow()
+    val state = _state
+        .onStart {
+            if(cachedBooks.isEmpty()) {
+                observeSearchQuery()
+            }
+        }
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000L),
+            _state.value
+        )
+
 
     fun onAction(action: BookListAction) {
         when (action) {

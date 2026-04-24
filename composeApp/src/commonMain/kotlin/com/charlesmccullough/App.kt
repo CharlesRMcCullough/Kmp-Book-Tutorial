@@ -15,8 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.charlesmccullough.bookpedia.book.data.network.KtorRemoteBookDataSource
+import com.charlesmccullough.bookpedia.book.data.repository.DefaultBookRepository
 import com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.BookListScreenRoot
 import com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.BookListViewModel
+import com.charlesmccullough.bookpedia.core.data.HttpClientFactory
+import io.ktor.client.engine.HttpClientEngine
 import org.jetbrains.compose.resources.painterResource
 
 import kmp_book_tutorial.composeapp.generated.resources.Res
@@ -24,9 +28,15 @@ import kmp_book_tutorial.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
-fun App() {
+fun App(engine: HttpClientEngine) {
     BookListScreenRoot(
-        viewModel = remember { BookListViewModel() },
+        viewModel = remember { BookListViewModel(
+            bookRepository = DefaultBookRepository(
+                remoteBookDataSource = KtorRemoteBookDataSource(
+                    httpClient = HttpClientFactory.create(engine)
+                )
+            )
+        ) },
         onBookClick = {
 
         }
