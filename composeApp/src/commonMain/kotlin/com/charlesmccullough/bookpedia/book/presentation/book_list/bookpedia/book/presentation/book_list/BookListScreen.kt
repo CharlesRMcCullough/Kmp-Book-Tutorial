@@ -252,9 +252,6 @@ private fun BookListScreen(
     }
 }
 
-
-
-
 @Preview
 @Composable
 private fun BookListScreenPreview() {
@@ -265,6 +262,22 @@ private fun BookListScreenPreview() {
         onAction = {}
     )
 
+}
+
+private val books = (1..100).map {
+    Book(
+        id = it.toString(),
+        title = "Book $it",
+        authors = listOf("Author $it"),
+        description = "Description $it",
+        imageUrl = "https://picsum.photos/200/300?random=$it",
+        languages = emptyList(),
+        averageRating = 4.5895,
+        ratingsCount = 5,
+        numPages = 100,
+        numEditions = 3,
+        firstPublishYear = "2000"
+    )
 }
 
 
