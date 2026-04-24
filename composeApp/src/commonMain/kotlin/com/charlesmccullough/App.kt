@@ -7,17 +7,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
-import com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.BookListScreenRoot
-import com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.BookListViewModel
-import org.koin.compose.viewmodel.koinViewModel
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.charlesmccullough.bookpedia.app.Route
+import com.charlesmccullough.bookpedia.book.presentation.book_list.BookListScreenRoot
+import com.charlesmccullough.bookpedia.book.presentation.book_list.BookListViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 
 @Composable

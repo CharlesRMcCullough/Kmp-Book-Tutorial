@@ -1,4 +1,4 @@
-package com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list
+package com.charlesmccullough.bookpedia.book.presentation.book_list
 
 import com.charlesmccullough.bookpedia.book.domain.Book
 

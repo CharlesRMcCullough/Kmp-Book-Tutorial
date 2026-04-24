@@ -1,9 +1,11 @@
-package com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list
+package com.charlesmccullough.bookpedia.book.presentation.book_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.charlesmccullough.bookpedia.book.domain.Book
 import com.charlesmccullough.bookpedia.book.domain.BookRepository
+import com.charlesmccullough.bookpedia.book.presentation.book_list.BookListAction
+import com.charlesmccullough.bookpedia.book.presentation.book_list.BookListState
 import com.charlesmccullough.bookpedia.core.domain.onError
 import com.charlesmccullough.bookpedia.core.domain.onSuccess
 import com.charlesmccullough.bookpedia.core.presentation.toUiText

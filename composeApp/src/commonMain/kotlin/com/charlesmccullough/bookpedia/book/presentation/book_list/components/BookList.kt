@@ -1,4 +1,4 @@
-package com.charlesmccullough.bookpedia.book.presentation.book_list.bookpedia.book.presentation.book_list.components
+package com.charlesmccullough.bookpedia.book.presentation.book_list.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
