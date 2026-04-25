@@ -6,6 +6,7 @@ import com.charlesmccullough.bookpedia.book.data.network.KtorRemoteBookDataSourc
 import com.charlesmccullough.bookpedia.book.data.network.RemoteBookDataSource
 import com.charlesmccullough.bookpedia.book.data.repository.DefaultBookRepository
 import com.charlesmccullough.bookpedia.book.domain.BookRepository
+import com.charlesmccullough.bookpedia.book.presentation.book_detail.BookDetailViewModel
 import com.charlesmccullough.bookpedia.book.presentation.book_list.BookListViewModel
 import com.charlesmccullough.bookpedia.book.presentation.book_list.SelectedBookViewModel
 import com.charlesmccullough.bookpedia.core.data.HttpClientFactory
@@ -23,4 +24,5 @@ val sharedModule = module {
     singleOf(::DefaultBookRepository).bind<BookRepository>()
     viewModelOf(::BookListViewModel)
     viewModelOf(::SelectedBookViewModel)
+    viewModelOf(::BookDetailViewModel)
 }
