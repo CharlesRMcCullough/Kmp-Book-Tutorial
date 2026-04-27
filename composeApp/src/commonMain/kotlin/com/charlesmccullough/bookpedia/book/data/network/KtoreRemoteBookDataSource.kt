@@ -1,5 +1,6 @@
 package com.charlesmccullough.bookpedia.book.data.network
 
+import com.charlesmccullough.bookpedia.book.data.dto.BookWorkDto
 import com.charlesmccullough.bookpedia.book.data.dto.SearchResponseDto
 import com.charlesmccullough.bookpedia.book.domain.Book
 import com.charlesmccullough.bookpedia.core.data.safeCall
@@ -19,7 +20,7 @@ class KtorRemoteBookDataSource(
         query: String,
         resultLimit: Int?
     ): Result<SearchResponseDto, DataError.Remote> {
-        return safeCall {
+        return safeCall<SearchResponseDto> {
             httpClient.get(
                 urlString = "$BASE_URL/search.json"
             ) {
@@ -34,11 +35,11 @@ class KtorRemoteBookDataSource(
         }
     }
 
-//    override suspend fun getBookDetails(bookWorkId: String): Result<BookWorkDto, DataError.Remote> {
-//        return safeCall<BookWorkDto> {
-//            httpClient.get(
-//                urlString = "$BASE_URL/works/$bookWorkId.json"
-//            )
-//        }
-//    }
+    override suspend fun getBookDetails(bookWorkId: String): Result<BookWorkDto, DataError.Remote> {
+        return safeCall<BookWorkDto> {
+            httpClient.get(
+                urlString = "$BASE_URL/works/$bookWorkId.json"
+            )
+        }
+    }
 }
