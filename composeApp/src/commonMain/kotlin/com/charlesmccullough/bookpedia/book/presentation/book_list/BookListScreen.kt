@@ -275,7 +275,7 @@ private val books = (1..100).map {
         imageUrl = "https://picsum.photos/200/300?random=$it",
         languages = emptyList(),
         averageRating = 4.5895,
-        ratingsCount = 5,
+        ratingCount = 5,
         numPages = 100,
         numEditions = 3,
         firstPublishYear = "2000"

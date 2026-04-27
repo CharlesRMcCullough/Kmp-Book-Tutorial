@@ -10,7 +10,8 @@ import com.charlesmccullough.bookpedia.book.presentation.book_detail.components.
 import com.charlesmccullough.bookpedia.core.domain.onSuccess
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -19,12 +20,13 @@ import kotlinx.coroutines.launch
 class BookDetailViewModel(
     private val bookRepository: BookRepository,
     private val savedStateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
     private val _state = MutableStateFlow(BookDetailState())
-    val bookId = savedStateHandle.toRoute< Route.BookDetail>().id
+    val bookId = savedStateHandle.toRoute<Route.BookDetail>().id
     val state = _state
         .onStart {
             fetchBookDescription()
+            observeFavoriteStatus()
         }
         .stateIn(
             viewModelScope,
@@ -41,16 +43,36 @@ class BookDetailViewModel(
                     )
                 }
             }
-            is BookDetailAction.onFavoriteClick -> {
 
+            is BookDetailAction.onFavoriteClick -> {
+                viewModelScope.launch {
+                    if (state.value.isFavorite) {
+                        bookRepository.deleteFromFavorites(bookId)
+                    } else {
+                        state.value.book?.let { book ->
+                            bookRepository.markAsFavorite(book)
+                        }
+                    }
+                }
             }
+
             else -> Unit
         }
     }
 
+    private fun observeFavoriteStatus() {
+        bookRepository
+            .isBookFavorite(bookId)
+
+            .onEach { isFavorite ->
+                _state.update { it.copy(
+                    isFavorite = isFavorite
+                ) }
+            }
+            .launchIn(viewModelScope)
+    }
     private fun fetchBookDescription() {
         viewModelScope.launch {
-
             bookRepository
                 .getBookDescription(bookId)
                 .onSuccess { description ->
